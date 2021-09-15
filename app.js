@@ -64,3 +64,25 @@ const addCost = () => {
         setInnerText('availeble-money', availableMoeny)
     }
 }
+
+
+// for inter button 
+const saveButton = document.getElementById("save-button");
+
+const incomeInputField = document.getElementById("monthly-income-input");
+incomeInputField.addEventListener("keypress", function (event) {
+    // event.preventDefault();
+    if (event.key === "Enter") {
+        saveButton.click();
+    }
+});
+const addButton = document.getElementById("add-button");
+
+const costAmount = document.getElementById("cost-amount");
+costAmount.addEventListener("keypress", function (event) {
+    // event.preventDefault();
+    if (event.key === "Enter") {
+        addButton.click();
+    }
+});
+
