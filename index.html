@@ -1,64 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cost </title>
     <!-- bootstrap 5  -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
+
 <body>
-     <main>
-         <h3 class=" text-center mt-3">Calculate your cost </h3>
-         <h1 class="shadow-lg p-3 mb-5 bg-body rounded text-center text-info"><span class="text-success">Kamrul Hasan</span> monthly  income : <span id="monthly-income" class="text-success">00</span>  TK Total cost : Available :</h1>
+    <main>
+        <!-- <section class="d-flex justify-content-center my-5">
+            <div class="card border-secondary mb-3 shadow-lg" style="width: 18rem;">
+                <div class="card-header">Hello,<span class="text-success"> Kamrul Hasan</span></div>
+                <div class="card-body text-secondary">
+                    <div class="card-title d-flex justify-content-evenly">
+                        <h4 class="d-inline">Income :</h4>
+                        <h4 class="d-inline"><span id="monthly-income" class="text-success">00</span> TK</h4>
+                    </div>
+                    <div class="card-text d-flex justify-content-evenly">
+                        <h5 class="d-inline">Cost :</h5>
+                        <h5 class="d-inline"> <span id="total-cost">00</span>TK</h5>
+                    </div>
+                </div>
 
-        <div class="text-center"> <h4 class="d-inline" >Enter your monthly income </h4>
-            <div class="input-group mb-3  d-inline">
-              
-                  <input  type="text" class="form-control d-inline w-25" placeholder="Amount" aria-label="Recipient's username" aria-describedby="button-addon2" id="monthly-income-input">
-                  <button class="btn btn-outline-secondary btn-success text-white" type="button" id="button-addon2" onclick="monthlyIncomeButton()">Save</button>
-                  
-               </div></div>
+                <div class="card-footer bg-transparent border-success d-flex justify-content-evenly">
+                    <h4 class="d-inline">Available :</h4>
+                    <h4 class="d-inline"><span id="availeble-money">00</span> TK</h4>
+                </div>
+            </div>
+            </div>
+        </section> -->
+        <div class="container">
+            <div class="row row-cols-2 row-cols-lg-5 g-0 d-flex">
+                <div class="col-lg-6">
 
-                 <!-- input cost  -->
- <div class="d-flex justify-content-center my-5"> <div class="input-group w-50">
-    <span class="input-group-text">Add your cost</span>
-    <input type="text" aria-label="First name" class="form-control"placeholder="Cost Dtails">
-    <input type="text" aria-label="Last name" class="form-control" placeholder="Cost amount"> <button class="btn btn-outline-secondary btn-success text-white" type="button" id="button-addon2" >Save</button>
-  </div></div>
+                    <section class="d-flex justify-content-center my-5">
+                        <div class="card border-secondary mb-3 shadow-lg" style="width: 25rem;">
+                            <div class="card-header">Hello,<span class="text-success"> Kamrul Hasan</span></div>
+                            <div class="card-body text-secondary">
+                                <div class="card-title d-flex justify-content-around">
+                                    <h4 class="d-inline">Income :</h4>
+                                    <h4 class="d-inline"><span id="monthly-income" class="text-success">00</span> TK
+                                    </h4>
+                                </div>
+                                <div class="card-text d-flex justify-content-around">
+                                    <h5 class="d-inline">Cost :</h5>
+                                    <h5 class="d-inline"> <span id="total-cost">00</span>TK</h5>
+                                </div>
+                            </div>
 
+                            <div class="card-footer bg-transparent border-success d-flex justify-content-around">
+                                <h4 class="d-inline">Available :</h4>
+                                <h4 class="d-inline"><span id="availeble-money">00</span> TK</h4>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-lg-6">
 
+                    <!-- cost  dtails-->
+                    <section class="d-flex justify-content-center  mt-5">
+                        <div class="card shadow p-3 mb-5 bg-body rounded" style="width: 18rem;">
+                            <h3>Cost of <span class="text-info">kamrul</span> </h3>
+                            <ul id="ul-parrent" class="list-group list-group-flush"></ul>
+                            <div class="card-footer list-group-item d-flex justify-content-between py-2">
+                                <p class="d-inline"> Total Cost :</p>
+                                <p class="d-inline"> <span id="li-total-cost">00</span>tk</p>
+                            </div>
+                        </div>
+                    </section>
 
+                </div>
 
-                <!-- cost  -->
-<div class="d-flex justify-content-center  mt-5">
-    
-    <div class="card shadow p-3 mb-5 bg-body rounded" style="width: 18rem;">
-        <h3>Cost of <span class="text-info">kamrul</span> </h3>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">An item</li>
-          <li class="list-group-item">A second item</li>
-          <li class="list-group-item">A third item</li>
-        </ul>
-        <div class="card-footer">
-          Card footer
+            </div>
         </div>
-      </div>
-</div>
 
 
-  
-     </main>
-     <script src="app.js"></script>
+        <section class="text-center">
+            <h4 class="d-inline">Enter your monthly income </h4>
+            <div class="input-group mb-3  d-inline">
+                <input type="text" class="form-control d-inline w-25" placeholder="Amount"
+                    aria-label="Recipient's username" aria-describedby="button-addon2" id="monthly-income-input">
+                <button class="btn btn-outline-secondary btn-success text-white" type="button" id="button-addon2"
+                    onclick="monthlyIncomeButton()">Save</button>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    
+            </div>
+        </section>
+
+        <!-- input cost  -->
+        <section class="d-flex justify-content-center my-5">
+            <div class="input-group w-50">
+                <span class="input-group-text">Add your cost</span>
+                <input type="text" id="cost-dtails" class="form-control" placeholder="Cost Dtails">
+                <input type="text" id="cost-amount" class="form-control" placeholder="Cost amount">
+                <button class="btn btn-outline-secondary btn-success text-white" type="button" id="button-addon2"
+                    onclick="addCost()">Add</button>
+            </div>
+        </section>
+
+
+
+
+        <!-- cost  dtails
+        <section class="d-flex justify-content-center  mt-5">
+            <div class="card shadow p-3 mb-5 bg-body rounded" style="width: 18rem;">
+                <h3>Cost of <span class="text-info">kamrul</span> </h3>
+                <ul id="ul-parrent" class="list-group list-group-flush"></ul>
+                <div class="card-footer list-group-item d-flex justify-content-between py-2">
+                    <p class="d-inline"> Total Cost :</p>
+                    <p class="d-inline"> <span id="li-total-cost">00</span>tk</p>
+                </div>
+            </div>
+        </section> -->
+
+
+
+
+
+
+        </div>
+        </div>
+
+    </main>
+    <script src="app.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
 </body>
+
 </html>
-<!-- git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/k17h02/Monthly-cost-dtails.git
-git push -u origin main -->
