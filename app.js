@@ -31,6 +31,7 @@ const monthlyIncomeButton = () => {
     const newMonthlyIncome = getValue('monthly-income-input')
     const oldMonney = getInnerValu('monthly-income');
     const netIncome = newMonthlyIncome + oldMonney;
+    addIncometoLocalStorage(netIncome);
 
     setInnerText('monthly-income', netIncome)
     const alMoney = getInnerValu('monthly-income') - getInnerValu('total-cost');
@@ -54,6 +55,9 @@ const addCost = () => {
     setInnerText('availeble-money', availableMoeny)
     document.getElementById('cost-dtails').value = '';
     document.getElementById('cost-amount').value = '';
+
+
+    addCostLocalStorage(costDtails, newCost);
 
 
 
@@ -81,25 +85,7 @@ costAmount.addEventListener("keypress", function (event) {
         addButton.click();
     }
 });
-// save user name and month 
-// const saveChange = document.getElementById("save-change");
 
-// const UserN = document.getElementById("user-name");
-// UserN.addEventListener("keypress", function (event) {
-//     // event.preventDefault();
-//     if (event.key === "Enter") {
-//         saveChange.click();
-//     }
-// });
-
-
-// const UserM = document.getElementById("user-month");
-// UserM.addEventListener("keypress", function (event) {
-//     // event.preventDefault();
-//     if (event.key === "Enter") {
-//         saveChange.click();
-//     }
-// });
 
 
 
@@ -108,6 +94,8 @@ const monthlyIncomeMOdal = () => {
     const user = document.getElementById('name').innerText;
     const month = document.getElementById('month').innerText;
     const encome = getValue('monthly-income-input');
+    // setTimeout(modaldtails(user, month, encome), 50000);
+    // setTimeout(modaldtails(user, month, encome), 5000)
     modaldtails(user, month, encome);
 
 }
@@ -245,6 +233,7 @@ const dynamicUserSet = (user) => {
     const div = document.createElement("div");
     div.classList.add('modal-content');
     if (user === 'User Name') {
+
         div.innerHTML = `
     <div class="modal-header">
 
@@ -322,7 +311,8 @@ const saveData = (data) => {
     if (data === 'userName') {
         const userS = document.getElementById('user-set').value;
         if (userS) {
-            setInnerText('name', userS)
+            setInnerText('name', userS);
+            addNametoLocalStorage(userS)
 
         } else {
             document.getElementById('error-massege').innerText = ''
@@ -346,59 +336,71 @@ const saveData = (data) => {
         switch (expr) {
             case 'january':
                 setInnerText('month', userS)
+                addMonthLocalStorage(userS)
                 break;
             case 'february':
 
+                addMonthLocalStorage(userS)
                 setInnerText('month', userS)
 
                 break;
             case 'march':
 
+                addMonthLocalStorage(userS)
                 setInnerText('month', userS)
 
                 break;
             case 'april':
 
+                addMonthLocalStorage(userS)
                 setInnerText('month', userS)
 
                 break;
             case 'may':
 
+                addMonthLocalStorage(userS)
                 setInnerText('month', userS)
 
                 break;
             case 'june':
 
+                addMonthLocalStorage(userS)
                 setInnerText('month', userS)
 
                 break;
             case 'july':
 
+                addMonthLocalStorage(userS)
                 setInnerText('month', userS)
 
                 break;
             case 'augest':
 
+                addMonthLocalStorage(userS)
                 setInnerText('month', userS)
 
                 break;
             case 'september':
 
+                addMonthLocalStorage(userS)
                 setInnerText('month', userS)
 
                 break;
             case 'october':
 
+                addMonthLocalStorage(userS)
                 setInnerText('month', userS)
 
                 break;
             case 'november':
 
+                addMonthLocalStorage(userS)
                 setInnerText('month', userS)
 
                 break;
             case 'december':
 
+                addMonthLocalStorage(userS)
                 setInnerText('month', userS)
 
                 break;
@@ -410,4 +412,132 @@ const saveData = (data) => {
         }
     }
 }
+//   l ocal storage 
+const getCost = () => {
+    const cost = localStorage.getItem('cost');
+    let costObj;
+    if (cost) {
+        costObj = JSON.parse(cost);
+    } else {
+        costObj = {};
+    }
+    return costObj;
+}
+const getUserName = () => {
+    const usName = localStorage.getItem('name');
+    let nameObj;
+    if (usName) {
+        nameObj = JSON.parse(usName);
+    } else {
+        nameObj = {};
+    }
+    return nameObj;
+}
+const getMonth = () => {
+    const uMonth = localStorage.getItem('month');
+    let monthObj;
+    if (uMonth) {
+        monthObj = JSON.parse(uMonth);
+    } else {
+        monthObj = {};
+    }
+    return monthObj;
+}
+const getMonthIncome = () => {
+    const monthlyIncome = localStorage.getItem('netIncome');
+    let monthlyIncomeObj;
+    if (monthlyIncome) {
+        monthlyIncomeObj = JSON.parse(monthlyIncome);
+    } else {
+        monthlyIncomeObj = {};
+    }
+    return monthlyIncomeObj;
+}
+
+const addIncometoLocalStorage = (name) => {
+    const cart = getMonthIncome();
+    cart[name] = 1;
+    console.log(cart)
+    const costStringified = JSON.stringify(cart);
+    localStorage.setItem('netIncome', costStringified);
+}
+const addNametoLocalStorage = (name) => {
+    const cart = getUserName();
+    cart[name] = 1;
+    console.log(cart)
+    const costStringified = JSON.stringify(cart);
+    localStorage.setItem('name', costStringified);
+}
+const addCostLocalStorage = (name, value) => {
+    const cart = getCost();
+    cart[name] = value;
+    console.log(cart)
+    const costStringified = JSON.stringify(cart);
+    localStorage.setItem('cost', costStringified);
+}
+const addMonthLocalStorage = (name) => {
+    const cart = getMonth();
+    cart[name] = 1;
+    console.log(cart)
+    const costStringified = JSON.stringify(cart);
+    localStorage.setItem('month', costStringified);
+}
+const displayCostFromLocalStorage = () => {
+    const cost = getCost();
+    let totalCost = 0;
+
+    for (const name in cost) {
+        totalCost += cost[name]
+
+
+        addLI(name, cost[name])
+
+    }
+    setInnerText('total-cost', totalCost)
+    setInnerText('li-total-cost', totalCost)
+    // console.log(totalCost)
+}
+const displayNameFromLocalStorage = () => {
+    const Uname = getUserName();
+    // const cost = 
+
+    for (const name in Uname) {
+
+
+        setInnerText('name', name)
+
+    }
+}
+const displayMonthFromLocalStorage = () => {
+    const Uname = getMonth();
+    // const cost = 
+
+    for (const name in Uname) {
+
+
+        setInnerText('month', name)
+
+    }
+}
+const displayincomeFromLocalStorage = () => {
+    const Uname = getMonthIncome();
+    // const cost = 
+
+    for (const name in Uname) {
+
+
+        setInnerText('monthly-income', name)
+
+    }
+}
+
+const availebleMoney = () => {
+    const saveMoney = getInnerValu('monthly-income') - getInnerValu('total-cost');
+    setInnerText('availeble-money', saveMoney)
+}
+displayincomeFromLocalStorage()
+displayMonthFromLocalStorage()
+displayNameFromLocalStorage()
+displayCostFromLocalStorage()
+availebleMoney()
 
