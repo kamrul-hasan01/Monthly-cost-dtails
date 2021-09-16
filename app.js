@@ -139,7 +139,9 @@ const modaldtails = (user, month, encome) => {
         <div class="modal-body text-start">
             <h2>Month : ${month}</h2>
             <h3>Income: ${encome}</h3>
-            <p class="text-danger">are you sure to add your money ?</p>
+            <p class="text-warning my-0 py-0">you can not change or edit it.</p>
+            <p class="text-danger py-0 my-0">are you sure to add your money ?</p>
+          
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
@@ -170,6 +172,9 @@ const costModelDtails = (dtail, value) => {
     document.getElementById('cost-modal').innerHTML = ''
     const div = document.createElement("div");
     div.classList.add('modal-content')
+    const availebleMOney = getInnerValu('availeble-money')
+    console.log(availebleMOney)
+    console.log(value)
 
     if (!dtail || (isNaN(value) || value < 0)) {
 
@@ -183,6 +188,27 @@ const costModelDtails = (dtail, value) => {
     <div class="modal-body text-start">
 
         <p class="text-danger">Your your cost dtails or value  is not correct</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+    </div>
+</div>
+    `}
+    else if (availebleMOney < value) {
+        document.getElementById('cost-dtails').value = ''
+        document.getElementById('cost-amount').value = ''
+
+        div.innerHTML = `
+    <div class="modal-content">
+    <div class="modal-header">
+      
+        <button type="button" class="btn-close" data-bs-dismiss="modal"
+            aria-label="Close"></button>
+    </div>
+    <div class="modal-body text-start">
+
+        <p class="text-danger">Your your cost is gater than from your available money</p>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -203,7 +229,10 @@ const costModelDtails = (dtail, value) => {
         <div class="modal-body text-start">
             <h2>Details : ${dtail}.</h2>
             <h3>Amount: ${value} ৳</h3>
-            <p class="text-danger">are you sure to add your uor cost ?</p>
+            <p class="text-warning my-0 py-0">you can not change or edit it.</p>
+            <p class="text-danger my-0 py-0">are you sure to add your cost ?</p>
+          
+           
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
@@ -272,6 +301,7 @@ const dynamicUserSet = (user) => {
     
                                                 <input type="text" id="user-set" aria-label="First name"
                                                     class="form-control" placeholder="Insert months name ">
+                                                    
                                                
     
                                             </div>
@@ -464,21 +494,21 @@ const addIncometoLocalStorage = (name) => {
 const addNametoLocalStorage = (name) => {
     const cart = getUserName();
     cart[name] = 1;
-    console.log(cart)
+
     const costStringified = JSON.stringify(cart);
     localStorage.setItem('name', costStringified);
 }
 const addCostLocalStorage = (name, value) => {
     const cart = getCost();
     cart[name] = value;
-    console.log(cart)
+
     const costStringified = JSON.stringify(cart);
     localStorage.setItem('cost', costStringified);
 }
 const addMonthLocalStorage = (name) => {
     const cart = getMonth();
     cart[name] = 1;
-    console.log(cart)
+
     const costStringified = JSON.stringify(cart);
     localStorage.setItem('month', costStringified);
 }
